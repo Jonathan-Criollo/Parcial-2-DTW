@@ -60,4 +60,7 @@ Route::get('/admin/dashboard', [DashboardController::class,'vistaDashboard'])->n
 // --- Ruta de conversion de datos ---
 Route::get('/admin/data/converter', [DataConverterController::class, 'xmlToJson']);
 
+//Ruta del SOAP
+Route::get('/soap/multiplicar', [SoapController::class, 'multiplicar']);
+
 
