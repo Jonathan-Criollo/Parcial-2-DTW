@@ -14,6 +14,5 @@ class SoapController extends Controller
         = $cliente ->__soapCall('add', [$params]);
 
         esponse()->json(['resultado' => $result->AddResult]);
-
     }
 }
