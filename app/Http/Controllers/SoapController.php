@@ -6,14 +6,16 @@ use Illuminate\Http\Request;
 
 class SoapController extends Controller
 {
-    public function multiplicar()
+    public function sumar()
     {
-        = new \SoapCliente('https://www.dneonline.com/calculator.asmx?WSDL');
-        //Aqui modificar para que el usuario pueda ingresar datos en una vista
-        = ['intA' => 10, 'intB' => 5];
-        = $cliente ->__soapCall('add', [$params]);
-
-        esponse()->json(['resultado' => $result->AddResult]);
-
+        try {
+            $client = new \SoapClient('http://www.dneonline.com/calculator.asmx?WSDL');
+            $params = ['intA' => 5, 'intB' => 3];
+            $result = $client->__soapCall('Add', [$params]);
+            return response()->json(['result' => $result->AddResult]);
+        } catch (\SoapFault $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
+
 }

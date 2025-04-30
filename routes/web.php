@@ -13,6 +13,8 @@ use App\Http\Controllers\ContactoController;
 
 use App\Http\Controllers\Backend\Dashboard\DashboardController;
 
+use App\Http\Controllers\SoapController;
+
 
 // --- LOGIN ---
 
@@ -60,4 +62,4 @@ Route::get('sin-permisos', [ControlController::class,'indexSinPermiso'])->name('
 
 Route::get('/admin/dashboard', [DashboardController::class,'vistaDashboard'])->name('admin.dashboard.index');
 
-Route::get('/soap/multiplicar', [SoapController:: class, 'multiplicar'])
+Route::get('/sumar', [SoapController::class, 'sumar']);
