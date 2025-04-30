@@ -9,12 +9,15 @@ use App\Http\Controllers\Backend\Perfil\PerfilController;
 use App\Http\Controllers\Backend\Configuracion\ConfiguracionController;
 use App\Http\Controllers\Backend\Registro\RegistroController;
 
-
+use App\Http\Controllers\ContactoController;
 
 use App\Http\Controllers\Backend\Dashboard\DashboardController;
 
 
 // --- LOGIN ---
+
+
+Route::get('/contactos-xml', [ContactoController::class, 'mostrarDesdeXML'])->name('contactos.xml');
 
 Route::get('/', [LoginController::class,'index'])->name('login');
 
