@@ -18,9 +18,6 @@ use App\Http\Controllers\SoapController;
 
 // --- LOGIN ---
 
-
-Route::get('/contactos-xml', [ContactoController::class, 'mostrarDesdeXML'])->name('contactos.xml');
-
 Route::get('/', [LoginController::class,'index'])->name('login');
 
 Route::post('/admin/login', [LoginController::class, 'login']);
@@ -62,4 +59,10 @@ Route::get('sin-permisos', [ControlController::class,'indexSinPermiso'])->name('
 
 Route::get('/admin/dashboard', [DashboardController::class,'vistaDashboard'])->name('admin.dashboard.index');
 
+
+Route::get('/contactos-xml', [ContactoController::class, 'mostrarDesdeXML'])->name('contactos.xml');
+
 Route::get('/sumar', [SoapController::class, 'sumar']);
+
+Route::get('/soap-form', [SoapController::class, 'formulario'])->name('soap.formulario');
+Route::post('/soap-calcular', [SoapController::class, 'calcular'])->name('soap.calcular');
