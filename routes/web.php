@@ -10,7 +10,7 @@ use App\Http\Controllers\Backend\Configuracion\ConfiguracionController;
 use App\Http\Controllers\Backend\Registro\RegistroController;
 
 
-
+use App\Http\Controllers\Backend\Data\DataConverterController;
 use App\Http\Controllers\Backend\Dashboard\DashboardController;
 
 
@@ -56,5 +56,8 @@ Route::post('/admin/editar-perfil/actualizar', [PerfilController::class, 'editar
 Route::get('sin-permisos', [ControlController::class,'indexSinPermiso'])->name('no.permisos.index');
 
 Route::get('/admin/dashboard', [DashboardController::class,'vistaDashboard'])->name('admin.dashboard.index');
+
+// --- Ruta de conversion de datos ---
+Route::get('/admin/data/converter', [DataConverterController::class, 'xmlToJson']);
 
 
