@@ -9,12 +9,15 @@ use App\Http\Controllers\Backend\Perfil\PerfilController;
 use App\Http\Controllers\Backend\Configuracion\ConfiguracionController;
 use App\Http\Controllers\Backend\Registro\RegistroController;
 
-
+use App\Http\Controllers\ContactoController;
 
 use App\Http\Controllers\Backend\Dashboard\DashboardController;
 
 
 // --- LOGIN ---
+
+
+Route::get('/contactos-xml', [ContactoController::class, 'mostrarDesdeXML'])->name('contactos.xml');
 
 Route::get('/', [LoginController::class,'index'])->name('login');
 
@@ -56,5 +59,3 @@ Route::post('/admin/editar-perfil/actualizar', [PerfilController::class, 'editar
 Route::get('sin-permisos', [ControlController::class,'indexSinPermiso'])->name('no.permisos.index');
 
 Route::get('/admin/dashboard', [DashboardController::class,'vistaDashboard'])->name('admin.dashboard.index');
-
-
