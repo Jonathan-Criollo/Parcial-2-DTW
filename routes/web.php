@@ -61,7 +61,7 @@ Route::get('/admin/dashboard', [DashboardController::class,'vistaDashboard'])->n
 
 
 Route::get('/contactos-xml', [ContactoController::class, 'mostrarDesdeXML'])->name('contactos.xml');
-
+Route::get('/contactos/tabla', [ContactoController::class, 'mostrarTablaXML'])->name('contactos.tabla');
 Route::get('/sumar', [SoapController::class, 'sumar']);
 
 Route::get('/soap-form', [SoapController::class, 'formulario'])->name('soap.formulario');
