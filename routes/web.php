@@ -65,4 +65,6 @@ Route::get('/contactos/tabla', [ContactoController::class, 'mostrarTablaXML'])->
 Route::get('/sumar', [SoapController::class, 'sumar']);
 
 Route::get('/soap-form', [SoapController::class, 'formulario'])->name('soap.formulario');
+
+Route::get('/contactos-listado', [ContactoController::class, 'mostrarDesdeXML'])->name('contactos.listado');
 Route::post('/soap-calcular', [SoapController::class, 'calcular'])->name('soap.calcular');
