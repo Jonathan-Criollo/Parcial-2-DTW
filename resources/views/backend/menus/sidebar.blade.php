@@ -58,9 +58,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('contactos.listado') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Otra Opción</p>
+                                <p>Tabla Contactos xml</p>
                             </a>
                         </li>
                     </ul>
