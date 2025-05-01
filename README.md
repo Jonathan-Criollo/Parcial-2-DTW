@@ -1,6 +1,6 @@
 # Parcial N°2 DTW GT01
 
-## Integrantes
+## Integrantes parcial
 
 ### Tema: #5 Agenda de contactos
 
