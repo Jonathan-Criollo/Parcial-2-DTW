@@ -14,6 +14,7 @@ use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\Backend\Dashboard\DashboardController;
 
 use App\Http\Controllers\SoapController;
+use App\Http\Controllers\ClimaController;
 
 
 // --- LOGIN ---
@@ -68,3 +69,7 @@ Route::get('/soap-form', [SoapController::class, 'formulario'])->name('soap.form
 
 Route::get('/contactos-listado', [ContactoController::class, 'mostrarDesdeXML'])->name('contactos.listado');
 Route::post('/soap-calcular', [SoapController::class, 'calcular'])->name('soap.calcular');
+
+Route::get('/clima', [ClimaController::class, 'formulario'])->name('clima.consultar');
+Route::post('/clima/consultar', [ClimaController::class, 'consultar'])->name('clima.consultar');
+
