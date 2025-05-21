@@ -33,6 +33,8 @@
 
     <section class="content">
         <div class="container-fluid">
+
+            @can('admin')
             <div class="card card-success">
                 <div class="card-header">
                     <h3 class="card-title">Lista</h3>
@@ -45,6 +47,8 @@
                     </div>
                 </div>
             </div>
+            @endcan
+
         </div>
     </section>
 
