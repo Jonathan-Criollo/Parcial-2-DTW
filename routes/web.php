@@ -16,6 +16,8 @@ use App\Http\Controllers\Backend\Dashboard\DashboardController;
 use App\Http\Controllers\SoapController;
 use App\Http\Controllers\ClimaController;
 
+use App\Http\Controllers\Backend\Agenda\AgendaContactoController;
+
 
 // --- LOGIN ---
 
@@ -73,3 +75,11 @@ Route::post('/soap-calcular', [SoapController::class, 'calcular'])->name('soap.c
 Route::get('/clima', [ClimaController::class, 'formulario'])->name('clima.formulario');
 Route::post('/clima/consultar', [ClimaController::class, 'consultar'])->name('clima.consultar');
 
+//prueba
+//prueba
+Route::get('/admin/contactos', [AgendaContactoController::class, 'index'])->name('contactos.index');
+Route::get('/admin/contactos/tabla', [AgendaContactoController::class, 'tablaContactos']);
+Route::post('/admin/contactos/guardar', [AgendaContactoController::class, 'store']);
+Route::get('/admin/contactos/editar/{id}', [AgendaContactoController::class, 'edit']);
+Route::post('/admin/contactos/actualizar/{id}', [AgendaContactoController::class, 'update']);
+Route::delete('/admin/contactos/eliminar/{id}', [AgendaContactoController::class, 'destroy']);
