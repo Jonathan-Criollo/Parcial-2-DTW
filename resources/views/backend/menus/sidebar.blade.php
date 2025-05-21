@@ -66,7 +66,32 @@
                     </ul>
                 </li>
 
+                <!-- Opciones del proyecto -->
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-calculator"></i>
+                        <p>
+                            Proyecto DAW
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('clima.formulario') }}" target="frameprincipal" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>API Clima</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Agenda Contactos</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
+                <!-- cierre del menu -->
             </ul>
         </nav>
 
