@@ -1,3 +1,4 @@
+@extends('backend.menus.superior')
 <table class="table table-bordered table-hover">
     <thead class="table-dark">
         <tr>
