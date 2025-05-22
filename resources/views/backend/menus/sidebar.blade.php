@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="#" class="brand-link">
         <img src="{{ asset('images/logo.png') }}" alt="Logo" class="brand-image img-circle elevation-3" >
-        <span class="brand-text font-weight" style="color: white">PANEL DE CONTROL</span>
+        <span class="brand-text font-weight" style="color: white">PROYECTO DTW</span>
     </a>
 
     <div class="sidebar">
@@ -46,7 +46,7 @@
                     <a href="#" class="nav-link">
                         <i class="fas fa-calculator"></i>
                         <p>
-                            Parcial 2 DTW
+                            Parcial 2
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -69,9 +69,9 @@
                 <!-- Opciones del proyecto -->
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-tools"></i>
                         <p>
-                            Proyecto DAW
+                            Proyecto Final
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -83,7 +83,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{ route('contactos.index') }}" target="frameprincipal" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Agenda Contactos</p>
                             </a>
