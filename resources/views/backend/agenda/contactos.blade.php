@@ -12,7 +12,9 @@
     {{-- Toastr para mensajes (opcional) --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
+    
+    {{-- SweetAlert2 para alertas (opcional) --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    
 </head>
 <body class="bg-light">
@@ -170,6 +172,7 @@ function guardarContacto() {
         notas: notas
     };
 
+    /*
     $.post(url, data, function(res) {
         if (res.success == 1) {
             $('#modalContacto').modal('hide');
@@ -182,6 +185,39 @@ function guardarContacto() {
     }).fail(function(err) {
         toastr.error("Error al guardar");
     });
+    */
+
+    $.post(url, data, function(res) {
+    if (res.success == 1) {
+        $('#modalContacto').modal('hide');
+        Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Contacto guardado con éxito",
+            showConfirmButton: false,
+            timer: 1500
+        });
+        cargarTabla();
+    } else {
+        Swal.fire({
+            icon: "error",
+            title: "Error al guardar",
+            text: "No se pudo guardar el contacto.",
+            timer: 2000,
+            showConfirmButton: false,
+            position: "top-end"
+        });
+    }
+}).fail(function(err) {
+    Swal.fire({
+        icon: "error",
+        title: "Error al guardar",
+        text: "Ocurrió un error inesperado.",
+        timer: 2000,
+        showConfirmButton: false,
+        position: "top-end"
+    });
+});
 }
 
 function editarContacto(id) {
@@ -196,8 +232,9 @@ function editarContacto(id) {
         $('#modalContacto').modal('show');
     });
 }
-
+/*
 function eliminarContacto(id) {
+    
     if (!confirm("¿Eliminar este contacto?")) return;
 
     $.ajax({
@@ -209,6 +246,45 @@ function eliminarContacto(id) {
                 toastr.info("Eliminado");
                 cargarTabla();
             }
+        }
+    });
+}
+*/
+
+function eliminarContacto(id) {
+    Swal.fire({
+        title: "¿Estás seguro?",
+        text: "¡No podrás revertir esto!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sí, eliminar",
+        cancelButtonText: "Cancelar"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: "/admin/contactos/eliminar/" + id,
+                type: 'DELETE',
+                data: { _token: '{{ csrf_token() }}' },
+                success: function(res) {
+                    if (res.success == 1) {
+                        Swal.fire({
+                            title: "¡Eliminado!",
+                            text: "El contacto ha sido eliminado.",
+                            icon: "success",
+                            timer: 1500,
+                            showConfirmButton: false
+                        });
+                        cargarTabla();
+                    } else {
+                        Swal.fire("Error", "No se pudo eliminar el contacto.", "error");
+                    }
+                },
+                error: function() {
+                    Swal.fire("Error", "No se pudo eliminar el contacto.", "error");
+                }
+            });
         }
     });
 }
