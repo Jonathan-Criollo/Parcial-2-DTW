@@ -82,6 +82,7 @@ function abrirModalCrear() {
     $('#modalContacto').modal('show');
 }
 
+/*
 function guardarContacto() {
     let id = $('#idContacto').val();
     let url = id ? "/admin/contactos/actualizar/" + id : "/admin/contactos/guardar";
@@ -99,6 +100,84 @@ function guardarContacto() {
             $('#modalContacto').modal('hide');
             toastr.success("Guardado con éxito");
             cargarTabla();
+        }
+    }).fail(function(err) {
+        toastr.error("Error al guardar");
+    });
+}
+*/
+
+// Adaptar para validar antes de guardar
+function guardarContacto() {
+    var nombre = $('#nombre').val().trim();
+    var apellidos = $('#apellidos').val().trim();
+    var telefono = $('#telefono').val().trim();
+    var email = $('#email').val().trim();
+    var notas = $('#notas').val().trim();
+    var id = $('#idContacto').val();
+
+    // Validaciones
+    if (nombre === '') {
+        toastr.error('El nombre es requerido');
+        return;
+    }
+    if (nombre.length > 50) {
+        toastr.error('Máximo 50 caracteres para el nombre');
+        return;
+    }
+    if (apellidos === '') {
+        toastr.error('Los apellidos son requeridos');
+        return;
+    }
+    if (apellidos.length > 50) {
+        toastr.error('Máximo 50 caracteres para los apellidos');
+        return;
+    }
+    if (telefono === '') {
+        toastr.error('El teléfono es requerido');
+        return;
+    }
+    if (!/^\d{8,15}$/.test(telefono)) {
+        toastr.error('El teléfono debe contener solo números y tener entre 8 y 15 dígitos');
+        return;
+    }
+    if (email === '') {
+        toastr.error('El email es requerido');
+        return;
+    }
+    // Validación básica de email
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        toastr.error('El email no es válido');
+        return;
+    }
+    if (notas === '') {
+        toastr.error('La nota es requerido');
+        return;
+    }
+    if (notas.length > 200) {
+        toastr.error('Máximo 200 caracteres para notas');
+        return;
+    }
+
+    var url = id ? "/admin/contactos/actualizar/" + id : "/admin/contactos/guardar";
+    var data = {
+        _token: '{{ csrf_token() }}',
+        nombre: nombre,
+        apellidos: apellidos,
+        telefono: telefono,
+        email: email,
+        notas: notas
+    };
+
+    $.post(url, data, function(res) {
+        if (res.success == 1) {
+            $('#modalContacto').modal('hide');
+            toastr.success("Contacto guardado con éxito");
+            cargarTabla();
+            
+        } else {
+            toastr.error("Error al guardar");
         }
     }).fail(function(err) {
         toastr.error("Error al guardar");
