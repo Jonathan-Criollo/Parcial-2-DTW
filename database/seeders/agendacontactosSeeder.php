@@ -10,6 +10,8 @@ class agendacontactosSeeder extends Seeder
 {
     public function run(): void
     {
+        //comando para ejecutar el seeder
+        //php artisan migrate:fresh --seed
         DB::table('AgendaContactos')->insert([
             [
                 'nombre' => 'Marcos',

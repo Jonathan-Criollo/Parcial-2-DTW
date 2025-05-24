@@ -1,5 +1,5 @@
 
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-primary elevation-4" id="sidebar">
     <a href="#" class="brand-link">
         <img src="{{ asset('images/logo.png') }}" alt="Logo" class="brand-image img-circle elevation-3" >
         <span class="brand-text font-weight" style="color: white">PROYECTO DTW</span>
