@@ -13,13 +13,7 @@
     </ul>
 
     <ul class="navbar-nav ml-auto">
-        
-        <li>
-            <a href="{{ route('admin.perfil') }}" target="frameprincipal" class="dropdown-item">
-                <i class="fas fa-user"></i>
-                <span id="usuario-logueado">User</span>
-            </a>
-        </li>
+    
         
         <li class="nav-item dropdown">
             
@@ -52,21 +46,6 @@
 </nav>
 
 
-
-<script>
-    // Guarda el usuario en sessionStorage si aún no está (esto normalmente lo harías en tu layout principal)
-    @if(isset($user))
-        sessionStorage.setItem('usuario', @json($user->name));
-    @endif
-
-    // Muestra el usuario en el menú
-    document.addEventListener('DOMContentLoaded', function() {
-        const usuario = sessionStorage.getItem('usuario');
-        if(usuario){
-            document.getElementById('usuario-logueado').textContent = usuario;
-        }
-    });
-</script>
 
 <script>
 // Cambia el modo de la página entre claro y oscuro
