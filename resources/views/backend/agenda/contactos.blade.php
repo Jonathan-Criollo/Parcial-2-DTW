@@ -12,10 +12,19 @@
     {{-- Toastr para mensajes (opcional) --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <!--Estilo para aplicar a los modos oscuro y blanco, del storage-->
+    <style>
+        
+        .oscuro{background-color: #343a40; color: white;}
+        .claro{background-color: #f8f9fa; color: black;}
+
+    </style> 
 </head>
 <body class="bg-light">
 
 <div class="container mt-5">
+    <button class="btn btn-dark mb-3" id="modo">cambiar moto</button>
     <h3>Agenda de Contactos</h3>
 
     <button class="btn btn-primary mb-3" onclick="abrirModalCrear()">Nuevo contacto</button>
@@ -134,6 +143,37 @@ function eliminarContacto(id) {
 $(document).ready(function () {
     cargarTabla();
 });
+</script>
+
+<script>
+    // Cambiar el modo oscuro o claro y el texto del botón
+    document.addEventListener('DOMContentLoaded', () => {
+        const boton = document.getElementById('modo');
+        let tema = localStorage.getItem('tema') || 'claro';
+        document.body.className = tema;
+
+        // Función para actualizar el texto del botón
+        function actualizarTextoBoton() {
+            if (tema === 'claro') {
+                boton.textContent = 'cambiar a oscuro';
+            } else {
+                boton.textContent = 'cambiar a claro';
+            }
+        }
+
+        actualizarTextoBoton();
+
+        boton.addEventListener('click', () => {
+            if (tema === 'claro') {
+                tema = 'oscuro';
+            } else {
+                tema = 'claro';
+            }
+            document.body.className = tema;
+            localStorage.setItem('tema', tema);
+            actualizarTextoBoton();
+        });
+    });
 </script>
 
 </body>

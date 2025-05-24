@@ -5,5 +5,6 @@
 
 @yield('archivos-js')
 
+
 </body>
 </html>
