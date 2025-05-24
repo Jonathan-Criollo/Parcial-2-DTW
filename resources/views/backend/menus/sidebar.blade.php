@@ -58,7 +58,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('contactos.listado') }}" class="nav-link">
+                            <a href="{{ route('contactos.listado') }}" target="frameprincipal" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Tabla Contactos xml</p>
                             </a>
@@ -99,8 +99,40 @@
     </div>
 </aside>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Guardar el menú al hacer click
+    document.querySelectorAll('.nav-sidebar a.nav-link').forEach(link => {
+        link.addEventListener('click', function() {
+            const nombreMenu = this.textContent.trim();
+            sessionStorage.setItem('ultimoSidebar', nombreMenu);
+        });
+    });
 
-
+    // Al cargar, resaltar el último menú visitado
+    const ultimo = sessionStorage.getItem('ultimoSidebar');
+    if (ultimo) {
+        document.querySelectorAll('.nav-sidebar a.nav-link').forEach(link => {
+            if (link.textContent.trim() === ultimo) {
+                link.classList.add('active');
+                link.style.fontWeight = 'bold';
+                link.style.color = 'red';
+                // Si está en un submenú, abre el treeview
+                const treeview = link.closest('.nav-treeview');
+                if (treeview) {
+                    treeview.style.display = 'block';
+                    const parent = treeview.closest('.has-treeview');
+                    if (parent) parent.classList.add('menu-open');
+                }
+            } else {
+                link.classList.remove('active');
+                link.style.fontWeight = '';
+                link.style.color = '';
+            }
+        });
+    }
+});
+</script>
 
 
 
