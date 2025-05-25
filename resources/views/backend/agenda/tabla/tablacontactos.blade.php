@@ -29,7 +29,7 @@
                                     <td>{{ $contacto->notas }}</td>
                                     <td>
                                         <button class="btn btn-warning btn-sm" onclick="editarContacto({{ $contacto->id }})">
-                                            <i class="fas fa-pencil-alt"></i> Editar
+                                            <i class="fas fa-pencil-alt" title="Editar"></i>&nbsp; Editar
                                         </button>
                                         <button class="btn btn-danger btn-sm" onclick="eliminarContacto({{ $contacto->id }})">
                                             <i class="fas fa-trash-alt"></i> Eliminar
@@ -56,7 +56,7 @@
             "info": true,
             "autoWidth": false,
             "pagingType": "full_numbers",
-            "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todo"]],
+            "lengthMenu": [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "Todo"]],
             "language": {
                 "sProcessing": "Procesando...",
                 "sLengthMenu": "Mostrar _MENU_ registros",

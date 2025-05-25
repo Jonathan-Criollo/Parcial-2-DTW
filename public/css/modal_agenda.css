@@ -1,0 +1,43 @@
+
+    /* Fondo degradado para el header */
+    .modal-header {
+        background: linear-gradient(90deg, #283ba7 0%, #4e54c8 100%);
+        color: #fff;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        border-bottom: none;
+    }
+    /* Sombra y bordes redondeados para el modal */
+    .modal-content {
+        border-radius: 1rem;
+        box-shadow: 0 8px 32px 0 rgba(40,59,167,0.2);
+        border: none;
+    }
+    /* Icono grande en el header */
+    .modal-header .fa-address-book {
+        font-size: 2rem;
+        margin-right: 10px;
+        color: #ffd700;
+    }
+    /* Inputs con sombra suave */
+    .form-control:focus {
+        border-color: #283ba7;
+        box-shadow: 0 0 0 0.2rem rgba(40,59,167,.15);
+    }
+    /* Botón guardar con gradiente */
+    .btn-guardar {
+        background: linear-gradient(90deg, #283ba7 0%, #4e54c8 100%);
+        color: #fff;
+        border: none;
+        font-weight: bold;
+        transition: background 0.3s;
+    }
+    .btn-guardar:hover {
+        background: linear-gradient(90deg, #4e54c8 0%, #283ba7 100%);
+        color: #ffd700;
+    }
+    /* Etiquetas más estilizadas */
+    .form-label {
+        font-weight: 500;
+        color: #283ba7;
+    }
