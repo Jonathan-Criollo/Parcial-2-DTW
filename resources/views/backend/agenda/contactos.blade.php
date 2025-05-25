@@ -5,63 +5,94 @@
     <title>Agenda de Contactos</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-   
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="{{ asset('css/modal_agenda.css') }}" rel="stylesheet">
+
+    
 </head>
 <body class="bg-light">
 
-<div class="container mt-5">
+<div id="divcontenedor" >
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="col-sm-12">
+                <h1>Agenda de Contactos</h1>
+            </div>
+            <br>
 
-    <h3>Agenda de Contactos</h3>
+            
+            <button type="button" class="btn btn-primary btn-rounded fw-bold" style="background-color:rgb(40, 59, 167); border:none;" onclick="abrirModalCrear()">
+                <i class="fas fa-edit"></i> Nuevo Contacto
+            </button>
+        </div>
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card card-success">
+                <div class="card-header">
+                    <h3 class="card-title">Lista</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="contenedorTabla"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <button class="btn btn-primary mb-3" onclick="abrirModalCrear()">Nuevo contacto</button>
-
-    <div id="contenedorTabla">
-        {{-- Aquí se carga la tabla por AJAX --}}
-    </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="modalContacto" tabindex="-1" aria-labelledby="modalContactoLabel" aria-hidden="true">
+    <div class="modal fade" id="modalContacto" tabindex="-1" aria-labelledby="modalContactoLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="tituloModal">Contacto</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                <i class="fas fa-address-book"></i>
+                <h5 class="modal-title mb-0" id="tituloModal">Contacto</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
             <div class="modal-body">
                 <form id="formContacto">
                     @csrf
                     <input type="hidden" id="idContacto">
                     <div class="mb-3">
-                        <label>Nombre</label>
-                        <input type="text" class="form-control" id="nombre">
+                        <label class="form-label">Nombre</label>
+                        <input type="text" class="form-control shadow-sm" id="nombre" placeholder="Ej: Juan">
                     </div>
                     <div class="mb-3">
-                        <label>Apellidos</label>
-                        <input type="text" class="form-control" id="apellidos">
+                        <label class="form-label">Apellidos</label>
+                        <input type="text" class="form-control shadow-sm" id="apellidos" placeholder="Ej: Pérez Gómez">
                     </div>
                     <div class="mb-3">
-                        <label>Teléfono</label>
-                        <input type="text" class="form-control" id="telefono">
+                        <label class="form-label">Teléfono</label>
+                        <input type="text" class="form-control shadow-sm" id="telefono" placeholder="Ej: 70112233">
                     </div>
                     <div class="mb-3">
-                        <label>Email</label>
-                        <input type="email" class="form-control" id="email">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control shadow-sm" id="email" placeholder="Ej: correo@ejemplo.com">
                     </div>
                     <div class="mb-3">
-                        <label>Notas</label>
-                        <input type="text" class="form-control" id="notas">
+                        <label class="form-label">Notas</label>
+                        <input type="text" class="form-control shadow-sm" id="notas" placeholder="Notas adicionales">
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-success" onclick="guardarContacto()">Guardar</button>
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    <i class="fas fa-times"></i> Cerrar
+                </button>
+                <button type="button" class="btn btn-guardar" onclick="guardarContacto()">
+                    <i class="fas fa-save"></i> Guardar
+                </button>
             </div>
         </div>
     </div>
+</div>
+
+    
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
