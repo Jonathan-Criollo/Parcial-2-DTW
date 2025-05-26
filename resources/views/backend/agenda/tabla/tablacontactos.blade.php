@@ -1,4 +1,3 @@
-
 <section class="content">
     <div class="container-fluid">
         <div class="row">
@@ -20,22 +19,28 @@
                             </thead>
                             <tbody>
                                 @foreach ($contactos as $contacto)
-                                <tr>
-                                    <td>{{ $contacto->id }}</td>
-                                    <td>{{ $contacto->nombre }}</td>
-                                    <td>{{ $contacto->apellidos }}</td>
-                                    <td>{{ $contacto->telefono }}</td>
-                                    <td>{{ $contacto->email }}</td>
-                                    <td>{{ $contacto->notas }}</td>
-                                    <td>
-                                        <button class="btn btn-warning btn-sm" onclick="editarContacto({{ $contacto->id }})">
-                                            <i class="fas fa-pencil-alt" title="Editar"></i>&nbsp; Editar
-                                        </button>
-                                        <button class="btn btn-danger btn-sm" onclick="eliminarContacto({{ $contacto->id }})">
-                                            <i class="fas fa-trash-alt"></i> Eliminar
-                                        </button>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>{{ $contacto->id }}</td>
+                                        <td>{{ $contacto->nombre }}</td>
+                                        <td>{{ $contacto->apellidos }}</td>
+                                        <td>{{ $contacto->telefono }}</td>
+                                        <td>{{ $contacto->email }}</td>
+                                        <td>{{ $contacto->notas }}</td>
+                                        <td>
+                                            @if (Auth::user()->hasRole('admin'))
+                                                <button class="btn btn-warning btn-sm"
+                                                    onclick="editarContacto({{ $contacto->id }})">
+                                                    <i class="fas fa-pencil-alt" title="Editar"></i>&nbsp; Editar
+                                                </button>
+                                                <button class="btn btn-danger btn-sm"
+                                                    onclick="eliminarContacto({{ $contacto->id }})">
+                                                    <i class="fas fa-trash-alt"></i> Eliminar
+                                                </button>
+                                            @else
+                                                <span class="text-muted">Sin permiso</span>
+                                            @endif
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -56,7 +61,10 @@
             "info": true,
             "autoWidth": false,
             "pagingType": "full_numbers",
-            "lengthMenu": [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "Todo"]],
+            "lengthMenu": [
+                [5, 10, 25, 50, 100, -1],
+                [5, 10, 25, 50, 100, "Todo"]
+            ],
             "language": {
                 "sProcessing": "Procesando...",
                 "sLengthMenu": "Mostrar _MENU_ registros",
@@ -77,7 +85,9 @@
                     "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                 }
             },
-            "responsive": true, "lengthChange": true, "autoWidth": false,
+            "responsive": true,
+            "lengthChange": true,
+            "autoWidth": false,
         });
     });
 </script>
